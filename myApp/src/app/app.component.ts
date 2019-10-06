@@ -65,7 +65,18 @@ export class AppComponent implements OnInit {
     }
   }
   saveDetails(): void {
-    this.appService.saveResult(this.restroList).subscribe(
+       const data = [];
+    this.restroList.forEach(element => {
+      data.push({
+        name: element.restaurant.name,
+        address: element.restaurant.location.address,
+        latitude: element.restaurant.location.latitude,
+        longitude: element.restaurant.location.longitude,
+        locality: element.restaurant.location.locality,
+        average_cost_for_two: element.restaurant.average_cost_for_two
+      });
+    });
+    this.appService.saveResult(data).subscribe(
       result => {
         this.message = "Saved";
       },
