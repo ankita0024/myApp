@@ -1,0 +1,53 @@
+.main {
+  margin: 1em;
+  background-color: aliceblue;
+  display: block;
+  height: 100%;
+  font-size: larger;
+}
+.main-header {
+  display: flex;
+}
+.city,
+.category {
+  height: 4em;
+  margin: 2em;
+}
+input {
+  width: 20em;
+  height: 2em;
+  font-size: 16px;
+}
+select {
+  height: 3em;
+  width: 20em;
+  font-size: 16px;
+}
+button {
+  font-size: 16px;
+  height: 3em;
+  width: 12em;
+  margin: 2em;
+}
+.error-message {
+  color: red;
+  margin: 2.5em;
+}
+.list-field {
+  margin: 1em;
+}
+.restroList {
+  display: block;
+  height: 8em;
+  margin: 1em;
+  border: black;
+  border-width: 1em;
+  border: solid;
+}
+.restro-length {
+  text-align: center;
+}
+.success {
+  color: green;
+  text-align: center;
+}

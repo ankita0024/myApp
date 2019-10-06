@@ -1,0 +1,76 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="main">
+  <div class="success" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <form [formGroup]="cityForm" (ngSubmit)="fetchCity()">
+    <div class="main-header" form="cityForm">
+      <div class="city">
+        <label class="field">City Name:</label>
+        <input
+          type="text"
+          name="cityName"
+          placeholder="Enter City Name"
+          formControlName="cityName"
+        />
+      </div>
+
+      <div class="category">
+        <label class="field">Category:</label>
+        <select formControlName="selectedCategory">
+          <option
+            *ngFor="let category of categoryList"
+            [value]="category.categories.id"
+            >{{ category.categories.name }}</option
+          >
+        </select>
+      </div>
+      <button type="submit">
+        Get Restros
+      </button>
+      <button
+        (click)="saveDetails()"
+        type="button"
+        *ngIf="restroList.length > 0"
+      >
+        Save
+      </button>
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </form>
+  <div class="main-content">
+    <div class="restro-length" *ngIf="restroList.length > 0; else elseBlock">
+      Total : {{ restroList.length }}
+    </div>
+    <ng-template #elseBlock>No result found. Try again.</ng-template>
+    <div class="restroList" *ngFor="let restro of restroList">
+      <span
+        ><label class="list-field">Name:</label
+        >{{ restro.restaurant.name }}</span
+      ><br />
+      <span
+        ><label class="list-field">Address:</label
+        >{{ restro.restaurant.location.address }}</span
+      ><br />
+      <span
+        ><label class="list-field">Lattitude:</label
+        >{{ restro.restaurant.location.latitude }}</span
+      ><br />
+      <span
+        ><label class="list-field">Longitude:</label
+        >{{ restro.restaurant.location.longitude }}</span
+      ><br />
+      <span
+        ><label class="list-field">Locality:</label
+        >{{ restro.restaurant.location.locality }}</span
+      ><br />
+      <span
+        ><label class="list-field">Average cost for two:</label
+        >{{ restro.restaurant.average_cost_for_two }}</span
+      >
+    </div>
+  </div>
+</div>
